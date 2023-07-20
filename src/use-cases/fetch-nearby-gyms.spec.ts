@@ -1,13 +1,13 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-repository'
-import { FetchNearbyGymsUseCaseUseCase } from './fetch-nearby-gyms'
 import { Decimal } from '@prisma/client/runtime'
+import { FetchNearbyGymsUseCase } from './fetch-nearby-gyms'
 let gymsInMemoryRepository: InMemoryGymsRepository
-let sut: FetchNearbyGymsUseCaseUseCase
+let sut: FetchNearbyGymsUseCase
 describe('Fetch nearbys gyms Use Case', () => {
   beforeEach(async () => {
     gymsInMemoryRepository = new InMemoryGymsRepository()
-    sut = new FetchNearbyGymsUseCaseUseCase(gymsInMemoryRepository)
+    sut = new FetchNearbyGymsUseCase(gymsInMemoryRepository)
   })
 
   it('should be able to fetch nearby gyms', async () => {
@@ -29,7 +29,7 @@ describe('Fetch nearbys gyms Use Case', () => {
       userLatitude: -23.57299645978125,
       userLongitude: -46.54343073370562,
     })
-    console.log(gyms)
+
     expect(gyms).toHaveLength(1)
     expect(gyms).toEqual([expect.objectContaining({ title: 'Near Gym' })])
   })
